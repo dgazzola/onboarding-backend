@@ -10,7 +10,7 @@ const db = process.env.DB_NAME;
 const uri = `mongodb+srv://${username}:${password}${cluster}/?retryWrites=true&writeConcern=majority`;
 const options: any = {
   dbName: db,
-  useUnifiedTopology: true,
+  // useUnifiedTopology: true,
 };
 
 mongoose.Promise = global.Promise;
@@ -18,8 +18,10 @@ export const connect = async () => {
   try {
     await mongoose.connect(uri, options);
     console.log('Connected to MongoDB');
+    return mongoose.connection.getClient(); // Expose the native client
   } catch (err) {
     console.error('Failed to connect to MongoDB', err);
+    throw err;
   }
 };
 
