@@ -18,7 +18,7 @@ export const connect = async () => {
   try {
     await mongoose.connect(uri, options);
     console.log('Connected to MongoDB');
-    return mongoose.connection.getClient(); // Expose the native client
+    return mongoose.connection.getClient();
   } catch (err) {
     console.error('Failed to connect to MongoDB', err);
     throw err;

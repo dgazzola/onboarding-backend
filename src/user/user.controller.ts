@@ -11,7 +11,6 @@ export class UserController {
   login = async (req: Request, res: Response): Promise<void> => {
     try {
       const user = await this.service.login(req.body);
-
       if (user === false) {
         res.status(401).json({ message: 'Invalid email or password' });
       } else {
@@ -21,6 +20,7 @@ export class UserController {
       res.status(500).json({ message: 'Server error' });
     }
   };
+
   update = async (req: Request, res: Response): Promise<void> => {
     try {
       const updatedUser = await this.service.update(req.body);
@@ -29,10 +29,10 @@ export class UserController {
       res.status(500).json({ message: 'Server error'});
     }
   };
+  
   readAll = async (req: Request, res: Response): Promise<void> => {
     try {
       const foundUsers = await this.service.readAll();
-      console.log('found users in controller', foundUsers);
       res.status(200).json(foundUsers);
     } catch (error) {
       res.status(500).json({ message: 'Server error'});

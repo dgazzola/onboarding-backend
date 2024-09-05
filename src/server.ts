@@ -1,10 +1,7 @@
-// In your main server file (e.g., server.ts or app.ts)
 import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-// import { profilesRouter } from './profiles/profile.router';
-// import './database';
-import { connect, disconnect } from './database'; // disconnect route too
+import { connect, disconnect } from './database';
 import { userRouter } from './user/user.router';
 import { adminRouter } from './admin/admin.router';
 

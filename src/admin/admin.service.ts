@@ -16,15 +16,14 @@ export class AdminService {
     return admin;
   }
 
-  async update(updates: any) { // Consider typing this parameter for better type safety
+  async update(updates: any) {
     try {
       const { _id, ...updateData } = updates;
       const updatedAdmin = await Admin.findByIdAndUpdate(
-        _id, // ID of the document to update
-        updateData, // Fields to update
-        { new: true } // Return the updated document
+        _id,
+        updateData,
+        { new: true }
       );
-      console.log('service updated admin:', updatedAdmin)
 
       return updatedAdmin;
     } catch (error) {
