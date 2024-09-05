@@ -6,8 +6,8 @@ const adminController = new AdminController();
 const adminRouter: Router = Router();
 
 adminRouter.route('/')
-  .get((req, res) => adminController.read(req, res))  // Explicitly passing the correct types
-  .put((req, res) => adminController.update(req, res))  // Explicitly passing the correct types
+  .get((req, res) => adminController.read(req, res))
+  .put((req, res) => adminController.update(req, res))
   .all(methodNotAllowed);
 
 export { adminRouter };

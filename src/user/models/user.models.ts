@@ -11,7 +11,7 @@ export interface IUser extends Document {
     zip: string;
   };
   birthdate?: Date;
-  currentPage: number; // Track which page the user is on
+  currentPage: number;
 }
 
 const UserSchema: Schema = new Schema({
@@ -25,7 +25,7 @@ const UserSchema: Schema = new Schema({
     zip: { type: String }
   },
   birthdate: { type: Date },
-  currentPage: { type: Number, default: 2 } // Default to page 1
+  currentPage: { type: Number, default: 2 }
 });
 
 export const User = mongoose.model<IUser>('User', UserSchema);

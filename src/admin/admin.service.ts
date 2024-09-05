@@ -1,27 +1,29 @@
 import { Admin } from "./models/admin.models";
 
 export class AdminService {
-  // Function to login or create a new user
   async read() {
+    let admin = await Admin.findOne();
 
-    // Find user by email
-    const admin = await Admin.findOne();
-    // console.log('service found admin:', admin)
-    return admin
+    if (!admin) {
+      admin = new Admin({
+        aboutme: 3,
+        address: 2,
+        birthdate: 2,
+      });
+      await admin.save();
+    }
+
+    return admin;
   }
-  async update(updates: any) { // Consider typing this parameter for better type safety
-    try {
-      // Extract the ID from the updates object
-      const { _id, ...updateData } = updates;
-      console.log('_id:', _id, 'updateData:', updateData)
 
-      // Find and update the document by its ID
+  async update(updates: any) {
+    try {
+      const { _id, ...updateData } = updates;
       const updatedAdmin = await Admin.findByIdAndUpdate(
-        _id, // ID of the document to update
-        updateData, // Fields to update
-        { new: true } // Return the updated document
+        _id,
+        updateData,
+        { new: true }
       );
-      console.log('service updated admin:', updatedAdmin)
 
       return updatedAdmin;
     } catch (error) {

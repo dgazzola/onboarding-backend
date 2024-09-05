@@ -24,7 +24,6 @@ export class UserService {
     try {
       const { _id, ...updateFields } = user;
       const updatedUser = await User.findByIdAndUpdate(_id, updateFields, { new: true });
-
       if (!updatedUser) {
         throw new Error('User not found');
       }
@@ -39,17 +38,14 @@ export class UserService {
   async readAll() {
     try {
       const foundUsers = await User.find();
-
       if (!foundUsers) {
         throw new Error('No users found!');
       }
-
       const usersWithoutPasswords = foundUsers.map(user => {
         const userObj = user.toObject();
         const { password, ...userWithoutPassword } = userObj;
         return userWithoutPassword;
       });
-
       return usersWithoutPasswords;
     } catch (error) {
       console.error('Error fetching users:', error);
