@@ -1,11 +1,8 @@
 import { User } from "./models/user.models";
 
 export class UserService {
-  // Function to login or create a new user
   async login(user: { email: string; password: string }) {
     const { email, password } = user;
-
-    // Find user by email
     let existingUser = await User.findOne({ email });
 
     if (existingUser) {
@@ -35,6 +32,27 @@ export class UserService {
       return updatedUserWithoutPassword;
     } catch (error) {
       console.error('Update failed:', error);
+      throw error;
+    }
+  }
+
+  async readAll() {
+    try {
+      const foundUsers = await User.find();
+
+      if (!foundUsers) {
+        throw new Error('No users found!');
+      }
+
+      const usersWithoutPasswords = foundUsers.map(user => {
+        const userObj = user.toObject();
+        const { password, ...userWithoutPassword } = userObj;
+        return userWithoutPassword;
+      });
+
+      return usersWithoutPasswords;
+    } catch (error) {
+      console.error('Error fetching users:', error);
       throw error;
     }
   }

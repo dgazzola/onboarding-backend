@@ -29,4 +29,13 @@ export class UserController {
       res.status(500).json({ message: 'Server error'});
     }
   };
+  readAll = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const foundUsers = await this.service.readAll();
+      console.log('found users in controller', foundUsers);
+      res.status(200).json(foundUsers);
+    } catch (error) {
+      res.status(500).json({ message: 'Server error'});
+    }
+  };
 }

@@ -10,6 +10,7 @@ userRouter.route('/sign-in')
   .all(methodNotAllowed);
   
 userRouter.route('/')
+  .get((req, res) => userController.readAll(req, res))  // Explicitly passing the correct types
   .put((req, res) => userController.update(req, res))  // Explicitly passing the correct types
   .all(methodNotAllowed);
 
