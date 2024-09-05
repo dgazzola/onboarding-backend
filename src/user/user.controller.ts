@@ -22,10 +22,7 @@ export class UserController {
     }
   };
   update = async (req: Request, res: Response): Promise<void> => {
-    console.log('update hit!');
     try {
-      console.log('user controller update endpoint hit:', req.body);
-
       const updatedUser = await this.service.update(req.body);
       res.status(200).json(updatedUser);
     } catch (error) {
