@@ -1,1 +1,1 @@
-web: ts-node src/server.ts
+web: npm run build && node dist/server.js
