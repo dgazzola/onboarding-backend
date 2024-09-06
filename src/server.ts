@@ -9,11 +9,9 @@ const app: Application = express();
 const port = process.env.PORT || 8080;
 
 const isProduction = process.env.NODE_ENV === 'production';
-
 const corsOptions = isProduction
   ? {
-      // origin: 'https://gazzola-onboard-frontend-968f4888cbbf.herokuapp.com',
-      origin: '*',
+      origin: 'https://gazzola-onboard-frontend-4ed16ffe3bc1.herokuapp.com',
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
       credentials: true,
     }
