@@ -30,6 +30,8 @@ app.use(cookieParser());
 
 connect();
 
+app.options('*', cors(corsOptions)); // include before defining routes
+
 app.use('/user', userRouter);
 app.use('/admin', adminRouter);
 
