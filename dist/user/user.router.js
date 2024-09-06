@@ -14,3 +14,4 @@ userRouter.route('/')
     .get((req, res) => userController.readAll(req, res))
     .put((req, res) => userController.update(req, res))
     .all(methodNotAllowed_1.methodNotAllowed);
+//# sourceMappingURL=user.router.js.map

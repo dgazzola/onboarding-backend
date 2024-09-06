@@ -7,3 +7,4 @@ function methodNotAllowed(req, res, next) {
         message: `${req.method} not allowed for ${req.originalUrl}`,
     });
 }
+//# sourceMappingURL=methodNotAllowed.js.map

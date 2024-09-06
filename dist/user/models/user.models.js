@@ -39,3 +39,4 @@ const UserSchema = new mongoose_1.Schema({
     currentPage: { type: Number, default: 2 }
 });
 exports.User = mongoose_1.default.model('User', UserSchema);
+//# sourceMappingURL=user.models.js.map
