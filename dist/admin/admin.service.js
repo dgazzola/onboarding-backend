@@ -52,4 +52,3 @@ class AdminService {
     }
 }
 exports.AdminService = AdminService;
-//# sourceMappingURL=admin.service.js.map

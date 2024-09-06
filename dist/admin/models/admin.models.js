@@ -43,4 +43,3 @@ const AdminSchema = new mongoose_1.Schema({
     }
 });
 exports.Admin = mongoose_1.default.model('settings', AdminSchema);
-//# sourceMappingURL=admin.models.js.map

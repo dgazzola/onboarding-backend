@@ -11,4 +11,3 @@ adminRouter.route('/')
     .get((req, res) => adminController.read(req, res))
     .put((req, res) => adminController.update(req, res))
     .all(methodNotAllowed_1.methodNotAllowed);
-//# sourceMappingURL=admin.router.js.map

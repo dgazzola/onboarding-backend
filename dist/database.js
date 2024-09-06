@@ -53,4 +53,3 @@ const disconnect = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.disconnect = disconnect;
 (0, exports.connect)();
-//# sourceMappingURL=database.js.map
