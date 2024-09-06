@@ -1,7 +1,7 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import { connect } from './database';
+import { connect, disconnect } from './database';
 import { userRouter } from './user/user.router';
 import { adminRouter } from './admin/admin.router';
 
@@ -9,27 +9,25 @@ const app: Application = express();
 const port = process.env.PORT || 8080;
 
 const isProduction = process.env.NODE_ENV === 'production';
-const corsOptions = isProduction
-  ? {
-      origin: '*',
-      methods: ['GET', 'POST', 'PUT', 'DELETE'],
-      credentials: true,
-    }
-  : {
-      origin: '*',
-      methods: ['GET', 'POST', 'PUT', 'DELETE'],
-      credentials: true,
-    };
 
+// const corsOptions = isProduction
+//   ? {
+//       origin: 'https://gazzola-onboard-frontend-968f4888cbbf.herokuapp.com',
+//       methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//       credentials: true,
+//     }
+//   : {
+//       origin: '*',
+//       methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//       credentials: true,
+//     };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(cookieParser());
 
 connect();
-
-app.options('*', cors(corsOptions)); // include before defining routes
 
 app.use('/user', userRouter);
 app.use('/admin', adminRouter);
