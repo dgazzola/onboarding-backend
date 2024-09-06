@@ -1,1 +1,0 @@
-{"version":3,"file":"methodNotAllowed.js","sourceRoot":"","sources":["../../src/errors/methodNotAllowed.ts"],"names":[],"mappings":";;AAEA,4CASC;AATD,SAAgB,gBAAgB,CAC9B,GAAY,EACZ,GAAa,EACb,IAAkB;IAElB,IAAI,CAAC;QACH,MAAM,EAAE,GAAG;QACX,OAAO,EAAE,GAAG,GAAG,CAAC,MAAM,oBAAoB,GAAG,CAAC,WAAW,EAAE;KAC5D,CAAC,CAAC;AACL,CAAC"}
