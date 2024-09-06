@@ -11,7 +11,7 @@ const port = process.env.PORT || 8080;
 const isProduction = process.env.NODE_ENV === 'production';
 const corsOptions = isProduction
   ? {
-      origin: 'https://gazzola-onboard-frontend-4ed16ffe3bc1.herokuapp.com',
+      origin: '*',
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
       credentials: true,
     }
@@ -20,6 +20,7 @@ const corsOptions = isProduction
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
       credentials: true,
     };
+
 
 app.use(cors(corsOptions));
 
