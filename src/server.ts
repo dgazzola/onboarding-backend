@@ -12,7 +12,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const corsOptions = isProduction
   ? {
-      origin: 'https://gazzola-onboard-frontend-968f4888cbbf.herokuapp.com',
+      // origin: 'https://gazzola-onboard-frontend-968f4888cbbf.herokuapp.com',
+      origin: '*',
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
       credentials: true,
     }
