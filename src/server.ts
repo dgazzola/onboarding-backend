@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import { connect, disconnect } from './database';
 import { userRouter } from './user/user.router';
 import { adminRouter } from './admin/admin.router';
+import { testRouter } from './test/test.router';
 
 const app: Application = express();
 const port = process.env.PORT || 8080;
@@ -32,6 +33,7 @@ connect().catch((err) => console.error('Database connection failed:', err));
 
 app.use('/user', userRouter);
 app.use('/admin', adminRouter);
+app.use('/', testRouter);
 
 app.use((req: Request, res: Response) => {
   console.log(req.url);
