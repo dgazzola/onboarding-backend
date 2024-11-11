@@ -12,22 +12,29 @@ const app: Application = express();
 const port = process.env.PORT || 8080;
 
 const isProduction = process.env.NODE_ENV === 'production';
+const allowedOrigin = process.env.FRONTEND_URL || 'https://onboarding-frontend-one.vercel.app';
 
-const corsOptions = isProduction
-  ? {
-      origin: process.env.FRONTEND_URL || 'https://onboarding-frontend-one.vercel.app/',
-      methods: ['GET', 'POST', 'PUT', 'DELETE'],
-      credentials: true,
+const corsOptions = {
+  origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
+    if (isProduction) {
+      if (origin && origin === allowedOrigin) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    } else {
+      callback(null, true);
     }
-  : {
-      origin: '*',
-      methods: ['GET', 'POST', 'PUT', 'DELETE'],
-      credentials: true,
-    };
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+};
 
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
+
+app.options('*', cors(corsOptions));
 
 connect().catch((err) => console.error('Database connection failed:', err));
 
