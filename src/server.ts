@@ -14,7 +14,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const corsOptions = isProduction
   ? {
-      origin: process.env.FRONTEND_URL || 'https://your-production-url.com',
+      origin: process.env.FRONTEND_URL || 'https://onboarding-frontend-one.vercel.app/',
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
       credentials: true,
     }
